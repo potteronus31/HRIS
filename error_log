@@ -1,0 +1,4 @@
+[24-Aug-2020 05:24:50 UTC] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 86 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/RuleSet.php on line 90
+[24-Aug-2020 05:32:46 UTC] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 32 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/RuleSetGenerator.php on line 214
+[24-Aug-2020 05:34:16 UTC] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 512 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/RuleSetGenerator.php on line 64
+[24-Aug-2020 05:48:51 UTC] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 72 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/RuleSetGenerator.php on line 221
