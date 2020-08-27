@@ -35,6 +35,6 @@ class RequestForLeave extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.requestforleave');
+        return $this->subject('Leave Application Request')->markdown('emails.requestforleave');
     }
 }

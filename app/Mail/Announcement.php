@@ -33,6 +33,6 @@ class Announcement extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.announcement');
+        return $this->subject('New Announcement')->markdown('emails.announcement');
     }
 }

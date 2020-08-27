@@ -34,6 +34,6 @@ class RejectLeave extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.rejectleave');
+        return $this->subject('Leave Application Status')->markdown('emails.rejectleave');
     }
 }

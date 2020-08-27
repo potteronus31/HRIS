@@ -33,6 +33,6 @@ class ApproveLeave extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.approveleave');
+        return $this->subject('Leave Application Status')->markdown('emails.approveleave');
     }
 }
