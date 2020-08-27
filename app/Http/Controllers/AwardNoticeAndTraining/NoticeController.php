@@ -63,7 +63,7 @@ class NoticeController extends Controller
             
             $getlastid = DB::table('notice')->orderBy('notice_id', 'DESC')->first();
         
-            echo $getid =  'https://hris.livewire365.com/notice/'.$getlastid->notice_id;
+            $getid =  'https://hris.livewire365.com/notice/'.$getlastid->notice_id;
             
             $getdescription = $request->description;
             $gettitle = $request->title;

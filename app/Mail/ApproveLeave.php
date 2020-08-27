@@ -10,19 +10,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class ApproveLeave extends Mailable
 {
     use Queueable, SerializesModels;
-    public $getdatenow, $getpurpose, $getdatefrom, $getdateto;
+    public $getdatenow, $getpurpose, $getdatefrom, $getdateto, $getleavetypename;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($getdatenow, $getpurpose, $getdatefrom, $getdateto)
+    public function __construct($getdatenow, $getpurpose, $getdatefrom, $getdateto, $getleavetypename)
     {
         //
         $this->getdatenow = $getdatenow;
         $this->getpurpose = $getpurpose;
         $this->getdatefrom = $getdateto;
         $this->getdateto = $getdateto;
+        $this->getleavetypename = $getleavetypename;
     }
 
     /**

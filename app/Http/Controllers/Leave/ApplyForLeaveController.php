@@ -77,6 +77,11 @@ class ApplyForLeaveController extends Controller
         // getting the supervisor id of the person who request for leave
         
         $getemployeeid = $request->employee_id;
+        
+        $getleaveid = $request->leave_type_id;
+        
+        $getleavetypename = DB::table('leave_type')->where("leave_type_id", $getleaveid)->value('leave_type_name');
+        
         $getsupervisorid = DB::table('employee')->where('employee_id', $getemployeeid)->value('supervisor_id');
         $getemail = DB::table('employee')->where('employee_id', $getsupervisorid)->value('email');
         
@@ -101,7 +106,7 @@ class ApplyForLeaveController extends Controller
 
         if($bug==0){
 
-             Mail::to($getemail)->send(new RequestForLeave($getfname, $getlname, $daterange, $purpose));
+             Mail::to($getemail)->send(new RequestForLeave($getfname, $getlname, $daterange, $purpose, $getleavetypename));
             return redirect('applyForLeave')->with('success', 'Leave application successfully send.');
 
         } else {

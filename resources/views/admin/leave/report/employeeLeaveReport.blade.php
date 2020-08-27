@@ -46,8 +46,8 @@
 								<div class="col-md-1"></div>
 								<div class="col-md-3">
 									<div class="form-group employeeName">
-										<label class="control-label" for="email">@lang('common.employee_name')<span class="validateRq">*</span></label>
-										<select class="form-control employee_id select2 required" required name="employee_id">
+										<label class="control-label" for="email">@lang('common.employee_name')<span class="validateRq"></span></label>
+										<select class="form-control employee_id select2" name="employee_id">
 											<option value="">---- @lang('common.please_select') ----</option>
 											@foreach($employeeList as $value)
 												<option value="{{$value->employee_id}}"  @if(@$value->employee_id == $employee_id) {{"selected"}} @endif>{{$value->first_name}} {{$value->last_name}}</option>

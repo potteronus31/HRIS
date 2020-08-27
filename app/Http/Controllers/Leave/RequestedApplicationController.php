@@ -75,7 +75,10 @@ class RequestedApplicationController extends Controller
             $getpurpose = $employee->purpose;
             $getdatefrom = $employee->application_from_date;
             $getdateto = $employee->application_to_date;
+            $getleavetype = $employee->leave_type_id;
         }
+        
+        $getleavetypename = DB::table('leave_type')->where("leave_type_id", $getleavetype)->value('leave_type_name');
         
         $getemail = DB::table('employee')->where('employee_id', $getemployeeid)->value("email");
         
@@ -103,12 +106,12 @@ class RequestedApplicationController extends Controller
         if($bug==0){
             if($request->status == 2) {
                 
-                Mail::to($getemail)->send(new ApproveLeave($getdatenow, $getpurpose, $getdatefrom, $getdateto));
+                Mail::to($getemail)->send(new ApproveLeave($getdatenow, $getpurpose, $getdatefrom, $getdateto, $getleavetypename));
                 
                 return redirect('requestedApplication')->with('success', 'Leave application approved successfully. ');
             }else{
                 
-                 Mail::to($getemail)->send(new RejectLeave($getdatenow, $getpurpose, $getdatefrom, $getdateto));
+                 Mail::to($getemail)->send(new RejectLeave($getdatenow, $getpurpose, $getdatefrom, $getdateto, $getleavetypename));
                 
                 return redirect('requestedApplication')->with('success', 'Leave application reject successfully. ');
             }
@@ -134,7 +137,10 @@ class RequestedApplicationController extends Controller
             $getpurpose = $employee->purpose;
             $getdatefrom = $employee->application_from_date;
             $getdateto = $employee->application_to_date;
+            $getleavetype = $employee->leave_type_id;
         }
+        
+        $getleavetypename = DB::table('leave_type')->where("leave_type_id", $getleavetype)->value('leave_type_name');
         
         $getemail = DB::table('employee')->where('employee_id', $getemployeeid)->value("email");
         
@@ -159,10 +165,10 @@ class RequestedApplicationController extends Controller
         }
         if($bug==0){
             if($request->status == 2) {
-                Mail::to($getemail)->send(new ApproveLeave($getdatenow, $getpurpose, $getdatefrom, $getdateto));
+                Mail::to($getemail)->send(new ApproveLeave($getdatenow, $getpurpose, $getdatefrom, $getdateto, $getleavetypename));
                 echo "approve";
             }else{
-                 Mail::to($getemail)->send(new RejectLeave($getdatenow, $getpurpose, $getdatefrom, $getdateto));
+                 Mail::to($getemail)->send(new RejectLeave($getdatenow, $getpurpose, $getdatefrom, $getdateto, $getleavetypename));
                 echo "reject";
             }
         }else {
