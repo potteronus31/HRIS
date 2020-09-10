@@ -42,11 +42,6 @@
 <div class="container-fluid">
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-          <a href="{{route('sendEmail')}}" class="btn btn-block btn-primary">Send An Email</a>
-        </div>
-    </div>
-    <div class="row bg-title">
-        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             <ol class="breadcrumb">
                 <li class="active breadcrumbColor"><a href="#"><i class="fa fa-home"></i> @lang('dashboard.dashboard')</a></li>
             </ol>

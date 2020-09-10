@@ -72,6 +72,7 @@
   text-align: center;
   font-weight: 600;
   font-size: 3em;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #columnbody {
@@ -97,6 +98,7 @@ p {
   outline-color: transparent;
   background: linear-gradient(236.5deg, #386C5F -6.22%, #02894B 100%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
 }
 
 #p1 {
@@ -137,7 +139,7 @@ p {
         </div>
         <div class="row">
             <div class="col" id="columnbody">
-                <h1 id="headingtitle" style="font-family: 'Montserrat';">Announcement</h1>
+                <h1 id="headingtitle">Announcement</h1>
                 <p id="p1">Dear Everyone,<br><br>This is to inform everyone about the {{$gettitle}} and is requiring everyone to read the full context below:</p>
                 <p id="p2">{!! $getdescription !!}</p>
                 <p id="p3">If you have any questions, kindly go to the management for clarification</p>
@@ -150,7 +152,11 @@ p {
                     <div>
                         <p id="followtxt">Follow us on social media</p>
                     </div>
-                    <div><img id="icon1" src="https://sample.hris.livewire365.com/Facebook_white.png"><img id="icon2" src="https://sample.hris.livewire365.com/Instagram_white.png"><img id="icon3" src="https://sample.hris.livewire365.com/LinkedIN_white.png"><img id="icon4" src="https://sample.hris.livewire365.com/Messenger_white.png"></div>
+                    <div>
+                        <a href="https://www.facebook.com/LEENTechNetworkSolutions/" target="_blank"><img id="icon1" src="https://sample.hris.livewire365.com/Facebook_white.png"></a>
+                        <a href="https://www.instagram.com/leentechsystems/" target="_blank"><img id="icon2" src="https://sample.hris.livewire365.com/Instagram_white.png"></a>
+                        <a href="https://www.messenger.com/t/145991878752363" target="_blank"><img id="icon4" src="https://sample.hris.livewire365.com/Messenger_white.png"></a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -26,3 +26,17 @@ Route::group(['middleware' => ['preventbackbutton','auth']], function(){
 
 });
 
+    Route::get('/lnsjobs', 'Recruitment\PublicJobController@index');
+   
+    
+    Route::group(['prefix'=>'jobPublic'], function(){
+        Route::get('/{jobPostID}',['as'=>'jobPublic.show','uses'=>'Recruitment\PublicJobController@show']);
+        Route::get('/apply/{jobPostID}',['as'=>'jobPublic.storeapp','uses'=>'Recruitment\PublicJobController@storeapp']);
+    });
+    
+    Route::group(['prefix'=>'job'], function(){
+        Route::post('/store',['as' => 'job.store', 'uses'=>'Recruitment\ApplyJobController@store']);
+    });
+    
+    
+

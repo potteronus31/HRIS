@@ -91,6 +91,26 @@
 									<div class="row">
 										<div class="col-md-8">
 											<div class="form-group">
+												<label class="control-label col-md-4">@lang('recruitement.requirements')</label>
+												<div class="col-md-8">
+													{!! Form::textarea('requirements',Input::old('requirements'), $attributes = array('class'=>'form-control textarea_editor1 required','rows'=>'15','id'=>'requirements','placeholder'=>__('recruitement.requirements'))) !!}
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-8">
+											<div class="form-group">
+												<label class="control-label col-md-4">@lang('recruitement.salary')<span class="validateRq">*</span></label>
+												<div class="col-md-8">
+													{!! Form::text('salary',Input::old('salary'), $attributes = array('class'=>'form-control required salary','id'=>'salary','placeholder'=>__('recruitement.salary'))) !!}
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-8">
+											<div class="form-group">
 												<label class="control-label col-md-4">@lang('common.status')<span class="validateRq">*</span></label>
 												<div class="col-md-8">
 													{{ Form::select('status', array('1' => __('recruitement.published'), '0' => __('recruitement.unpublished')), Input::old('status'), array('class' => 'form-control status  required')) }}
@@ -103,7 +123,10 @@
 											<div class="form-group">
 												<label class="control-label col-md-4">@lang('recruitement.job_publish_date')<span class="validateRq">*</span></label>
 												<div class="col-md-8">
+												    <div class="input-group">
+												    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
 													{!! Form::text('publish_date',(isset($editModeData)) ? dateConvertDBtoForm($editModeData->publish_date) : Input::old('publish_date'), $attributes = array('class'=>'form-control required dateField','id'=>'publish_date','placeholder'=>__('recruitement.job_publish_date'),'readonly'=>'readonly')) !!}
+												    </div>
 												</div>
 											</div>
 										</div>
@@ -160,5 +183,14 @@
                 new CBPFWTabs(el);
             });
         })();
+        
+         (function() {
+            $('.textarea_editor1').wysihtml5();
+
+            [].slice.call(document.querySelectorAll('.sttabs')).forEach(function(el) {
+                new CBPFWTabs(el);
+            });
+        })();
+        
 	</script>
 @endsection

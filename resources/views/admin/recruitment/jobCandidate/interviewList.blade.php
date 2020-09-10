@@ -52,7 +52,7 @@
 					</div>
 				@endif
 			</div>
-			@if(count($results) > 0)
+			@if(count($results) >= 0) 
 				@foreach($results as $value)
 					<div class="col-md-offset-2 col-md-7 ">
 						<div class="panel panel-default">

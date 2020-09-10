@@ -10,7 +10,7 @@ class Job extends Model
     protected $primaryKey = 'job_id';
 
     protected $fillable = [
-        'job_id', 'job_title','post','job_description','application_end_date','created_by','updated_by','status'
+        'job_id', 'job_title','post','job_description','requirements','salary','application_end_date','publish_date','created_by','updated_by','status'
     ];
 
     public function createdBy(){

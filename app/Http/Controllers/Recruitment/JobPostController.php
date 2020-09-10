@@ -23,7 +23,6 @@ class JobPostController extends Controller
     }
 
 
-
     public function create()
 	{
         return view('admin.recruitment.job.form');
@@ -36,6 +35,7 @@ class JobPostController extends Controller
         $input 							= $request->all();
         $input['created_by'] 			= Auth::user()->user_id;
         $input['updated_by'] 			= Auth::user()->user_id;
+        $input['publish_date']          = dateConvertFormtoDB($request->publish_date);
         $input['application_end_date']  = dateConvertFormtoDB($request->application_end_date);
 
         try{
@@ -77,6 +77,7 @@ class JobPostController extends Controller
         $input 							= $request->all();
         $input['created_by'] 			= Auth::user()->user_id;
         $input['updated_by'] 			= Auth::user()->user_id;
+        $input['publish_date']          = dateConvertFormtoDB($request->publish_date);
         $input['application_end_date']  = dateConvertFormtoDB($request->application_end_date);
 
         try{

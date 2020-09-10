@@ -37,7 +37,7 @@
 											</div>
 											<br>
 											<div class="test-center">
-												<p style="font-weight:400 ">@lang('recruitement.appllication_end_date') : {{date(" d M Y ", strtotime($result->application_end_date))}}</p>
+												<p style="font-weight:400 ">@lang('recruitement.application_end_date') : {{date(" d M Y ", strtotime($result->application_end_date))}}</p>
 											</div>
 										</div>
 									</div>

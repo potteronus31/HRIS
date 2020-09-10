@@ -151,7 +151,11 @@ p {
                     <div>
                         <p id="followtxt">Follow us on social media</p>
                     </div>
-                    <div><img id="icon1" src="https://sample.hris.livewire365.com/Facebook_white.png"><img id="icon2" src="https://sample.hris.livewire365.com/Instagram_white.png"><img id="icon3" src="https://sample.hris.livewire365.com/LinkedIN_white.png"><img id="icon4" src="https://sample.hris.livewire365.com/Messenger_white.png"></div>
+                    <div>
+                         <a href="https://www.facebook.com/LEENTechNetworkSolutions/" target="_blank"><img id="icon1" src="https://sample.hris.livewire365.com/Facebook_white.png"></a>
+                        <a href="https://www.instagram.com/leentechsystems/" target="_blank"><img id="icon2" src="https://sample.hris.livewire365.com/Instagram_white.png"></a>
+                        <a href="https://www.messenger.com/t/145991878752363" target="_blank"><img id="icon4" src="https://sample.hris.livewire365.com/Messenger_white.png"></a>
+                    </div>
                 </div>
             </div>
         </div>

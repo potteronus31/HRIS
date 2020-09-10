@@ -10,7 +10,7 @@ class JobApplicant extends Model
     protected $primaryKey = 'job_applicant_id';
 
     protected $fillable = [
-        'job_applicant_id', 'job_id','post','applicant_name','applicant_email','phone','attached_resume','status','cover_letter','application_date'
+        'job_applicant_id', 'job_id','post','applicant_name','applicant_email','phone','address','attached_resume','status','cover_letter','application_date'
     ];
 
     public function job(){

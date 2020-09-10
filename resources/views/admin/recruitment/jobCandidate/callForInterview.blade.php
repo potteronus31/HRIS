@@ -36,7 +36,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-offset-2 col-md-7">
-				@if(count($results) > 0)
+				@if(isset($results->job_applicant_id))
 					<p class="box-title post" >Job Name :
 						{{$results->job->job_title}}
 					</p>
@@ -55,7 +55,7 @@
 					</div>
 				@endif
 			</div>
-			@if(count($results) > 0)
+			@if(isset($results->job_applicant_id))
 				{{ Form::open( array('route' => array('applicant.jobInterviewStore', $results->job_applicant_id), 'files' => 'true','id' => 'workShiftForm')) }}
 
 				<div class="col-md-offset-2 col-md-7 ">

@@ -20,8 +20,23 @@ return [
     'short_listed_application' => 'Short Listed Application',
     'reject_application' => 'Reject Application',
     'job_interview' => 'Job Interview',
+    'requirements' => 'Job Requirements',
+    'salary' => 'Salary Range',
+    'apply' => 'Apply Now',
+    'sub_resume' => 'Submit Resume',
+    'app_form' => 'Application Form',
     
     // added new 
 
     'job_post' => 'Job Post',
+    
+    
+    //hiring
+    'applicant' => 'Applicant Name',
+    'app_email' => 'Applicant Email',
+    'phone' => 'Phone Number',
+    'cov_letter' => 'Cover Letter',
+    'address' => 'Address',
+    'resume' => 'Resume',
+    
 ];
