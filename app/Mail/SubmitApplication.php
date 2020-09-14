@@ -11,15 +11,18 @@ class SubmitApplication extends Mailable
 {
     use Queueable, SerializesModels;
     protected $data;
+    public $getappname, $getjobname;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data=[])
+    public function __construct($data=[], $getappname, $getjobname)
     {
         //
          $this->data = $data;
+         $this->getappname = $getappname;
+         $this->getjobname = $getjobname;
     }
 
     /**
@@ -29,9 +32,13 @@ class SubmitApplication extends Mailable
      */
     public function build()
     {
+        $path = "https://hris.livewire365.com/uploads/applicantResume";
+        $name = $this->data['getfilename'];
+        
         return  $this->markdown('emails.submitapplication')
+                ->from($this->data['fromadd'])
                 ->subject('Job Application')
-                ->attach($this->data['file']->getRealPath(),
+                ->attach($path ."/". $name,
                 [
                     'as' => $this->data['file']->getClientOriginalName(),
                     'mime' => $this->data['file']->getClientMimeType(),

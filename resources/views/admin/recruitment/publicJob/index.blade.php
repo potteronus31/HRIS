@@ -236,8 +236,8 @@
 									
 						     
 							<div class="col-md-offset-0 col-md-12">
-							    	  
 								<div class="white-box">
+
 								     @foreach($result as $result)
 									<div class="comment-center p-t-10">
 										<div class="comment-body">

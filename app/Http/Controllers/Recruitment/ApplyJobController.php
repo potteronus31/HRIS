@@ -25,13 +25,20 @@ class ApplyJobController extends Controller
     //
    public function store(ApplicantUserRequest $request)
     {
+        date_default_timezone_set('Asia/Manila');
         $file 	= $request->file('attach_file');
         $input 						= $request->all();
         $input['application_date']  = date("Y-m-d");
         
         $getjobid = $request->input('job_id');
         
+        $getjobname = DB::table('job')->where('job_id', $getjobid)->value('job_title');
+        
+        $getappname = $request->input('applicant_name');
+        
         if($file){
+            
+            //$fileName = str_replace(' ', '', $file->getClientOriginalName());
             $fileName = md5(str_random(30).time().'_'.$request->file('attach_file')).'.'.$request->file('attach_file')->getClientOriginalExtension();
             $request->file('attach_file')->move('uploads/applicantResume/', $fileName);
             $input['attached_resume'] = $fileName;
@@ -39,7 +46,9 @@ class ApplyJobController extends Controller
         
         $results = DB::table('job')->where('job_id', $getjobid)->first();
         $data = [
-        'file' => $file
+        'file' => $file,
+        'getfilename' => $fileName,
+        'fromadd' => $request->input('applicant_email')
         ];
 
         try{
@@ -52,7 +61,7 @@ class ApplyJobController extends Controller
 
         if($bug == 0){
             
-            // Mail::to('bryan@leentechsystems.com')->send(new SubmitApplication($data));
+            Mail::to('bryan@leentechsystems.com')->send(new SubmitApplication($data, $getappname, $getjobname));
             
             return redirect('lnsjobs')->with('success', 'Application successfully created.');
         }else {

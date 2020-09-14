@@ -18,6 +18,14 @@ use App\Model\Interview;
 
 use App\Model\Job;
 
+use App\Mail\InterviewApplicant;
+
+use App\Mail\RejectApplicant;
+
+use App\Mail\ShortlistApplicant;
+
+use Mail;
+
 
 class JobCandidateController extends Controller
 {
@@ -49,6 +57,15 @@ class JobCandidateController extends Controller
 	
     public function shortlist($id)
 	{
+	    
+	     $getresult = DB::table('job_applicant')->where('job_applicant_id', $id)->get();
+        
+        foreach($getresult as $result)
+        {
+            $getjobid = $result->job_applicant_id;
+            $getshortlist= $result->applicant_email;
+        }
+	    
         try{
             JobApplicant::where('job_applicant_id',$id)->update(['status' => JobStatus::$SHORTLIST]);
             $bug = 0;
@@ -58,6 +75,10 @@ class JobCandidateController extends Controller
         }
 
         if($bug == 0){
+            
+            Mail::to($getshortlist)->send(new ShortlistApplicant());
+            
+            
             return redirect()->back()->with('success', 'Job application shortListed.');
         }else {
             return redirect()->back()->with('error', 'Something Error Found !, Please try again.');
@@ -68,6 +89,16 @@ class JobCandidateController extends Controller
 
     public function reject($id)
 	{
+	    
+	    $getresult = DB::table('job_applicant')->where('job_applicant_id', $id)->get();
+        
+        foreach($getresult as $result)
+        {
+            $getjobid = $result->job_applicant_id;
+            $getreject = $result->applicant_email;
+        }
+	    
+	    
         try{
             JobApplicant::where('job_applicant_id',$id)->update(['status' => JobStatus::$REJECT]);
             $bug = 0;
@@ -77,6 +108,10 @@ class JobCandidateController extends Controller
         }
 
         if($bug == 0){
+            
+             Mail::to($getreject)->send(new RejectApplicant());
+            
+            
             return redirect()->back()->with('success', 'Job application rejected.');
         }else {
             return redirect()->back()->with('error', 'Something Error Found !, Please try again.');
@@ -110,11 +145,21 @@ class JobCandidateController extends Controller
 
     public function jobInterviewStore(JobInterviewRequest $request,$id)
 	{
+	    date_default_timezone_set('Asia/Manila');
 
         $input 						= $request->all();
         $input['job_applicant_id'] 	= $id;
         $input['interview_time'] 	= date("H:i:s", strtotime($request->interview_time));
         $input['interview_date']	= dateConvertFormtoDB($request->interview_date);
+        
+        
+        $getresult = DB::table('job_applicant')->where('job_applicant_id', $id)->get();
+        
+        foreach($getresult as $result)
+        {
+            $getjobid = $result->job_applicant_id;
+            $getappemail = $result->applicant_email;
+        }
 
         try{
             DB::beginTransaction();
@@ -132,6 +177,9 @@ class JobCandidateController extends Controller
         }
 
         if($bug == 0){
+            
+            Mail::to($getappemail)->send(new InterviewApplicant());
+            
             return redirect('jobCandidate/shortListedApplicant/'.$data->job_id)->with('success', 'Job interview added.');
         }else {
             return redirect()->back()->with('error', 'Something Error Found !, Please try again.');
