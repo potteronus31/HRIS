@@ -10,15 +10,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class InterviewApplicant extends Mailable
 {
     use Queueable, SerializesModels;
-
+    
+    public $gettime, $getdate, $getjobtitle, $getname;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($gettime, $getdate, $getjobtitle, $getname)
     {
         //
+        $this->gettime = $gettime;
+        $this->getdate = $getdate;
+        $this->getjobtitle = $getjobtitle;
+        $this->getname = $getname;
     }
 
     /**

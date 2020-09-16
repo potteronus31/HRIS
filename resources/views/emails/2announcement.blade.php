@@ -14,7 +14,7 @@
 
     #container1
     {
-        width: 40%;
+        width: 60%;
     }
 
 #columnheader {

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Recruitment;
 
+use Toolkito\Larasap\SendTo;
+
 use App\Http\Requests\JobPostRequest;
 
 use Illuminate\Support\Facades\Auth;
@@ -28,10 +30,17 @@ class JobPostController extends Controller
         return view('admin.recruitment.job.form');
     }
 
-
-
     public function store(JobPostRequest $request) 
 	{
+	    SendTo::Facebook(
+            'link',
+            [
+                'link' => 'https://github.com/toolkito/laravel-social-auto-posting',
+                'message' => 'Laravel social auto posting'
+            ]
+        );
+        	    
+	    
         $input 							= $request->all();
         $input['created_by'] 			= Auth::user()->user_id;
         $input['updated_by'] 			= Auth::user()->user_id;

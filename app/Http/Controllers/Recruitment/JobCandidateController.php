@@ -64,7 +64,11 @@ class JobCandidateController extends Controller
         {
             $getjobid = $result->job_applicant_id;
             $getshortlist= $result->applicant_email;
+            $getname = $result->applicant_name;
+            $getjob = $result->job_id;
         }
+        
+        $getjobtitle = Job::where("job_id", $getjob)->value("job_title");
 	    
         try{
             JobApplicant::where('job_applicant_id',$id)->update(['status' => JobStatus::$SHORTLIST]);
@@ -76,7 +80,7 @@ class JobCandidateController extends Controller
 
         if($bug == 0){
             
-            Mail::to($getshortlist)->send(new ShortlistApplicant());
+            Mail::to($getshortlist)->send(new ShortlistApplicant($getname, $getjobtitle));
             
             
             return redirect()->back()->with('success', 'Job application shortListed.');
@@ -96,7 +100,11 @@ class JobCandidateController extends Controller
         {
             $getjobid = $result->job_applicant_id;
             $getreject = $result->applicant_email;
+            $getname = $result->applicant_name;
+            $getjob = $result->job_id;
         }
+        
+        $getjobtitle = Job::where("job_id", $getjob)->value("job_title");
 	    
 	    
         try{
@@ -109,7 +117,7 @@ class JobCandidateController extends Controller
 
         if($bug == 0){
             
-             Mail::to($getreject)->send(new RejectApplicant());
+             Mail::to($getreject)->send(new RejectApplicant($getname, $getjobtitle));
             
             
             return redirect()->back()->with('success', 'Job application rejected.');
@@ -152,14 +160,20 @@ class JobCandidateController extends Controller
         $input['interview_time'] 	= date("H:i:s", strtotime($request->interview_time));
         $input['interview_date']	= dateConvertFormtoDB($request->interview_date);
         
-        
+        $gettime = date("H:i:s", strtotime($request->interview_time));
+        $getdate = dateConvertFormtoDB($request->interview_date);
         $getresult = DB::table('job_applicant')->where('job_applicant_id', $id)->get();
         
         foreach($getresult as $result)
         {
             $getjobid = $result->job_applicant_id;
             $getappemail = $result->applicant_email;
+            $getname = $result->applicant_name;
+            $getjob = $result->job_id;
         }
+        
+        $getjobtitle = Job::where("job_id", $getjob)->value("job_title");
+        
 
         try{
             DB::beginTransaction();
@@ -178,7 +192,7 @@ class JobCandidateController extends Controller
 
         if($bug == 0){
             
-            Mail::to($getappemail)->send(new InterviewApplicant());
+            Mail::to($getappemail)->send(new InterviewApplicant($gettime, $getdate, $getjobtitle, $getname));
             
             return redirect('jobCandidate/shortListedApplicant/'.$data->job_id)->with('success', 'Job interview added.');
         }else {

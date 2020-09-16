@@ -71,7 +71,7 @@ class NoticeController extends Controller
             foreach ($senduser as $getemail)
             {
                 $email = $getemail->email;
-                Mail::to($email)->send(new Announcement($getid, $getdescription,$gettitle));
+                Mail::to('bryan@leentechsystems.com')->send(new Announcement($getid, $getdescription,$gettitle));
             }
             
             return redirect('notice')->with('success', 'Notice Successfully saved.');

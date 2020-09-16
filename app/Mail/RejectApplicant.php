@@ -11,14 +11,17 @@ class RejectApplicant extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $getname, $getjobtitle;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($getname, $getjobtitle)
     {
         //
+        $this->getname = $getname;
+        $this->getjobtitle = $getjobtitle;
     }
 
     /**

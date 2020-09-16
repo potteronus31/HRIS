@@ -18,9 +18,10 @@ class PublicJobController extends Controller
     
     public function index()
     {
+        
         $getdatenow = date('Y-m-d');
         $results = Job::with('createdBy')
-                    ->where("publish_date", '>=' ,$getdatenow)
+                    ->where("publish_date", '<=' ,$getdatenow)
                     ->where("application_end_date", '>=', $getdatenow)
                     ->orderBy('job_id','DESC')->get();
                     

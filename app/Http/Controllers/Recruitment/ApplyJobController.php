@@ -33,7 +33,6 @@ class ApplyJobController extends Controller
         $getjobid = $request->input('job_id');
         
         $getjobname = DB::table('job')->where('job_id', $getjobid)->value('job_title');
-        
         $getappname = $request->input('applicant_name');
         
         if($file){
