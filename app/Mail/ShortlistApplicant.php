@@ -30,6 +30,7 @@ class ShortlistApplicant extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.shortlistapp');
+        return $this->markdown('emails.shortlistapp')
+                    ->subject("LEENTech Network Solutions - Job Application Status");
     }
 }

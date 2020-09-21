@@ -31,6 +31,7 @@ class RejectApplicant extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.rejectapp');
+        return $this->markdown('emails.rejectapp')
+                    ->subject("LEENTech Network Solutions - Job Application Status");
     }
 }

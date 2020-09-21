@@ -11,18 +11,19 @@ class SubmitApplication extends Mailable
 {
     use Queueable, SerializesModels;
     protected $data;
-    public $getappname, $getjobname;
+    public $getappname, $getjobname, $getid;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data=[], $getappname, $getjobname)
+    public function __construct($data=[], $getappname, $getjobname, $getid)
     {
         //
          $this->data = $data;
          $this->getappname = $getappname;
          $this->getjobname = $getjobname;
+         $this->getid = $getid;
     }
 
     /**

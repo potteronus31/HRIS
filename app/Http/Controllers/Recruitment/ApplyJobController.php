@@ -57,10 +57,12 @@ class ApplyJobController extends Controller
         catch(\Exception $e){
             $bug = $e->errorInfo[1];
         }
+        
+        $getid = "https://hris.livewire365.com/jobCandidate/applyCandidateList/".$getjobid;
 
         if($bug == 0){
             
-            Mail::to('bryan@leentechsystems.com')->send(new SubmitApplication($data, $getappname, $getjobname));
+            Mail::to('bryan@leentechsystems.com')->send(new SubmitApplication($data, $getappname, $getjobname, $getid));
             
             return redirect('lnsjobs')->with('success', 'Application successfully created.');
         }else {
